@@ -6,8 +6,8 @@ setuptools.setup(
     author="Karel Psota",
     author_email="karel.psota@clevermaps.io",
     description="CleverMaps Jupyter widget",
-    packages=['cm_jupyter_widgets'],
-    package_data={'cm_jupyter_widgets': ['index.js', 'index.css']},
+    packages=['cm_jupyter_widget'],
+    package_data={'cm_jupyter_widget': ['index.js', 'index.css']},
     include_package_data=True,
     install_requires=[
 	'anywidget'
