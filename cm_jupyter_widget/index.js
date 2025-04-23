@@ -10,8 +10,10 @@ function render({ model, el }) {
     el.appendChild(div);
 
     const sdk = clevermapsJsSdk();
+    console.log(sdk)
 
     const iframe = sdk.createIframe(view_url, options);
+    console.log(iframe)
 
     sdk.renderIframe('frameDiv', iframe);
 }
