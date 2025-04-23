@@ -3,7 +3,8 @@ import clevermapsJsSdk from 'https://cdn.jsdelivr.net/npm/clevermaps-js-sdk@2.5.
 function render({ model, el }) {
 
     let view_url = model.get('view_url');
-    let options = model.get('options');
+    let options_string = model.get('options');
+    let options = JSON.parse(options_string);
 
     let div = document.createElement('div');
     div.setAttribute("id", "frameDiv");

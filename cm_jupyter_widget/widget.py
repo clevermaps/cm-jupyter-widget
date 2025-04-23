@@ -10,4 +10,4 @@ class CleverMapsWidget(anywidget.AnyWidget):
     # required
     view_url = traitlets.Unicode(allow_none=False).tag(sync=True)
     # optional
-    options = traitlets.Dict(allow_none=True).tag(sync=True)
+    options = traitlets.Unicode(allow_none=True).tag(sync=True)
