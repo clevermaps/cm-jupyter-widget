@@ -5,6 +5,7 @@ function render({ model, el }) {
     let view_url = model.get('view_url');
     let options_string = model.get('options');
     let options = JSON.parse(options_string);
+    console.log(options_string, options);
 
     let div = document.createElement('div');
     div.setAttribute("id", "frameDiv");
