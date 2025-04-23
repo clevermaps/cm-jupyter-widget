@@ -13,9 +13,9 @@ function render({ model, el }) {
     console.log(sdk)
 
     const iframe = sdk.createIframe(view_url, options);
-    console.log(iframe)
+    console.log(iframe, div)
 
-    sdk.renderIframe('frameDiv', iframe);
+    sdk.renderIframe(div, iframe);
 }
 
 export default { render };
