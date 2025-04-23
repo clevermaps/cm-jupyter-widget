@@ -11,3 +11,5 @@ class CleverMapsWidget(anywidget.AnyWidget):
     view_url = traitlets.Unicode(allow_none=False).tag(sync=True)
     # optional
     options = traitlets.Unicode(allow_none=True).tag(sync=True)
+
+    command   = traitlets.Unicode("").tag(sync=True)

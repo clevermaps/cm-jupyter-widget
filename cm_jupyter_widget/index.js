@@ -1,7 +1,6 @@
 import clevermapsJsSdk from 'https://cdn.jsdelivr.net/npm/clevermaps-js-sdk@2.5.0/+esm';
 
 function render({ model, el }) {
-
     let view_url = model.get('view_url');
     let options_string = model.get('options');
     let options = JSON.parse(options_string);
@@ -18,6 +17,10 @@ function render({ model, el }) {
     console.log(iframe, div)
 
     sdk.renderIframe(div, iframe);
+
+    model.on("change:command", () => {
+        iframe.message.toggleFitAll();
+    });
 }
 
 export default { render };
