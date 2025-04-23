@@ -1,4 +1,4 @@
-import clevermapsJsSdk from 'https://cdn.jsdelivr.net/npm/clevermaps-js-sdk@2.4.1/+esm';
+import clevermapsJsSdk from 'https://cdn.jsdelivr.net/npm/clevermaps-js-sdk@2.5.0/+esm';
 
 function render({ model, el }) {
 
