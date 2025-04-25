@@ -24,17 +24,19 @@ class CleverMapsWidget(anywidget.AnyWidget):
         """Fit all features in the view"""
         self.command = {"type": "toggleFitAll"}
 
-    def add_filter(self, filter_id, value):
+    def add_filter(self, definition_id, values, instance_id):
         """Add a filter
         
         Args:
-            filter_id (str): The ID of the filter to add
-            value: The value to set the filter to
+            definition_id (str): The ID of the filter definition
+            values: The values to set the filter to
+            instance_id (str): The instance ID of the filter
         """
         self.command = {
             "type": "addFilter",
-            "filterId": filter_id,
-            "value": value
+            "definitionId": definition_id,
+            "values": values,
+            "instanceId": instance_id
         }
 
     def set_filter(self, filter_id, value):

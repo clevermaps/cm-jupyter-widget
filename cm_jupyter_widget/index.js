@@ -28,7 +28,7 @@ function render({ model, el }) {
                 iframe.message.toggleFitAll();
                 break;
             case 'addFilter':
-                iframe.message.addFilter(command.filterId, command.value);
+                iframe.message.addFilter(command.definitionId, command.values, command.instanceId);
                 break;
             case 'setFilter':
                 iframe.message.setFilter(command.filterId, command.value);
