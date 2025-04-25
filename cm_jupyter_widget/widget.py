@@ -49,39 +49,39 @@ class CleverMapsWidget(anywidget.AnyWidget):
             "instanceId": instance_id
         }
 
-    def set_filter(self, filter_id, value):
+    def set_filter(self, instance_id: str, value):
         """Set a filter value
         
         Args:
-            filter_id (str): The ID of the filter to set
+            instance_id (str): The instance ID of the filter to set
             value: The value to set the filter to
         """
         self.command = {
             "type": "setFilter",
-            "filterId": filter_id,
+            "instanceId": instance_id,
             "value": value
         }
 
-    def remove_filter(self, filter_id):
+    def remove_filter(self, instance_id: str):
         """Remove a filter
         
         Args:
-            filter_id (str): The ID of the filter to remove
+            instance_id (str): The instance ID of the filter to remove
         """
         self.command = {
             "type": "removeFilter",
-            "filterId": filter_id
+            "instanceId": instance_id
         }
 
-    def reset_filter(self, filter_id):
+    def reset_filter(self, instance_id: str):
         """Reset a filter
         
         Args:
-            filter_id (str): The ID of the filter to reset
+            instance_id (str): The instance ID of the filter to reset
         """
         self.command = {
             "type": "resetFilter",
-            "filterId": filter_id
+            "instanceId": instance_id
         }
 
     def set_state(self, view_url):

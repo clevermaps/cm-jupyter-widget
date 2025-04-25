@@ -31,13 +31,13 @@ function render({ model, el }) {
                 iframe.message.addFilter(command.definitionId, command.values, command.instanceId);
                 break;
             case 'setFilter':
-                iframe.message.setFilter(command.filterId, command.value);
+                iframe.message.setFilter(command.instanceId, command.value);
                 break;
             case 'removeFilter':
-                iframe.message.removeFilter(command.filterId);
+                iframe.message.removeFilter(command.instanceId);
                 break;
             case 'resetFilter':
-                iframe.message.resetFilter(command.filterId);
+                iframe.message.resetFilter(command.instanceId);
                 break;
             case 'setState':
                 iframe.setState(command.viewUrl);
