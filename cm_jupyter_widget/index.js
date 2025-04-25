@@ -4,22 +4,53 @@ function render({ model, el }) {
     let view_url = model.get('view_url');
     let options_string = model.get('options');
     let options = JSON.parse(options_string);
-    console.log(options_string, options);
+    console.log('sdk options:', options);
 
     let div = document.createElement('div');
     div.setAttribute("id", "frameDiv");
     el.appendChild(div);
 
     const sdk = clevermapsJsSdk();
-    console.log(sdk)
+    console.log('sdk created:', sdk);
 
     const iframe = sdk.createIframe(view_url, options);
-    console.log(iframe, div)
+    console.log('iframe created:', iframe);
 
     sdk.renderIframe(div, iframe);
+    console.log('iframe rendered in div:', div);
 
     model.on("change:command", () => {
-        iframe.message.toggleFitAll();
+        const command = model.get('command');
+        if (!command || !command.type) return;
+
+        switch (command.type) {
+            case 'toggleFitAll':
+                iframe.message.toggleFitAll();
+                break;
+            case 'addFilter':
+                iframe.message.addFilter(command.filterId, command.value);
+                break;
+            case 'setFilter':
+                iframe.message.setFilter(command.filterId, command.value);
+                break;
+            case 'removeFilter':
+                iframe.message.removeFilter(command.filterId);
+                break;
+            case 'resetFilter':
+                iframe.message.resetFilter(command.filterId);
+                break;
+            case 'setState':
+                iframe.setState(command.viewUrl);
+                break;
+            case 'openBookmarkModal':
+                iframe.message.openBookmarkModal();
+                break;
+            case 'openExportModal':
+                iframe.message.openExportModal();
+                break;
+            default:
+                console.warn('Unknown command type:', command.type);
+        }
     });
 }
 

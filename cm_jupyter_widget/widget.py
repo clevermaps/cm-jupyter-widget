@@ -1,6 +1,7 @@
 import anywidget
 import traitlets
 import pathlib
+import json
 
 class CleverMapsWidget(anywidget.AnyWidget):
     
@@ -11,5 +12,85 @@ class CleverMapsWidget(anywidget.AnyWidget):
     view_url = traitlets.Unicode(allow_none=False).tag(sync=True)
     # optional
     options = traitlets.Unicode(allow_none=True).tag(sync=True)
+    
+    command = traitlets.Dict({}).tag(sync=True)
 
-    command   = traitlets.Unicode("").tag(sync=True)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        if 'options' in kwargs and isinstance(kwargs['options'], dict):
+            self.options = json.dumps(kwargs['options'])
+
+    def toggle_fit_all(self):
+        """Fit all features in the view"""
+        self.command = {"type": "toggleFitAll"}
+
+    def add_filter(self, filter_id, value):
+        """Add a filter
+        
+        Args:
+            filter_id (str): The ID of the filter to add
+            value: The value to set the filter to
+        """
+        self.command = {
+            "type": "addFilter",
+            "filterId": filter_id,
+            "value": value
+        }
+
+    def set_filter(self, filter_id, value):
+        """Set a filter value
+        
+        Args:
+            filter_id (str): The ID of the filter to set
+            value: The value to set the filter to
+        """
+        self.command = {
+            "type": "setFilter",
+            "filterId": filter_id,
+            "value": value
+        }
+
+    def remove_filter(self, filter_id):
+        """Remove a filter
+        
+        Args:
+            filter_id (str): The ID of the filter to remove
+        """
+        self.command = {
+            "type": "removeFilter",
+            "filterId": filter_id
+        }
+
+    def reset_filter(self, filter_id):
+        """Reset a filter
+        
+        Args:
+            filter_id (str): The ID of the filter to reset
+        """
+        self.command = {
+            "type": "resetFilter",
+            "filterId": filter_id
+        }
+
+    def set_state(self, view_url):
+        """Set the state by loading a new view URL
+        
+        Args:
+            view_url (str): The URL of the view to load
+        """
+        self.command = {
+            "type": "setState",
+            "viewUrl": view_url
+        }
+
+    def open_bookmark_modal(self):
+        """Open the bookmark modal"""
+        self.command = {
+            "type": "openBookmarkModal"
+        }
+
+    def open_export_modal(self):
+        """Open the export modal"""
+        self.command = {
+            "type": "openExportModal"
+        }
