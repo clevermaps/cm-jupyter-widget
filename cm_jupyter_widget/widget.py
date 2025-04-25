@@ -2,6 +2,7 @@ import anywidget
 import traitlets
 import pathlib
 import json
+from typing import Union, Dict, Any
 
 class CleverMapsWidget(anywidget.AnyWidget):
     
@@ -12,7 +13,7 @@ class CleverMapsWidget(anywidget.AnyWidget):
     view_url = traitlets.Unicode(allow_none=False).tag(sync=True)
     # optional
     options = traitlets.Unicode(allow_none=True).tag(sync=True)
-    
+
     command = traitlets.Dict({}).tag(sync=True)
 
     def __init__(self, **kwargs):
@@ -24,12 +25,21 @@ class CleverMapsWidget(anywidget.AnyWidget):
         """Fit all features in the view"""
         self.command = {"type": "toggleFitAll"}
 
-    def add_filter(self, definition_id, values, instance_id):
+    def add_filter(self, definition_id: str, values: Dict[str, Any], instance_id: str):
         """Add a filter
         
         Args:
             definition_id (str): The ID of the filter definition
-            values: The values to set the filter to
+            values: The values to set the filter to, depending on filter type:
+                - MultiSelect: {"values": ["Male", 1, null]}
+                - SingleSelect: {"value": "selected_value"} or {"value": null}
+                - Feature: {"values": ["feature1", 1]} or {"values": null}
+                - Histogram: {"values": [1, 10], "nullFiltered": true} or {"values": [null, null]}
+                - Date: {
+                    "startDate": {"value": "2023-01-01"} or date function,
+                    "endDate": {"value": "2023-12-31"} or date function
+                  }
+                - Indicator: {"values": [min, max], "granularity": "year"}
             instance_id (str): The instance ID of the filter
         """
         self.command = {
