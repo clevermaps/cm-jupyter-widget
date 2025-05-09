@@ -21,7 +21,7 @@ pip install clevermaps-jupyter-widget
 ### Basic Usage
 
 ```python
-from cm_jupyter_widget import CleverMapsWidget
+from cm_jupyter_widget.widget import CleverMapsWidget
 
 # Create a widget with a view URL
 widget = CleverMapsWidget(view_url="https://your-view-url")
