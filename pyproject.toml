@@ -26,4 +26,4 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/cm-jupyter-widget" 
+Homepage = "https://github.com/clevermaps/cm-jupyter-widget" 

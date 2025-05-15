@@ -1,6 +1,7 @@
 import clevermapsJsSdk from 'https://cdn.jsdelivr.net/npm/clevermaps-js-sdk@2.5.0/+esm';
 
 function render({ model, el }) {
+    let base_url = model.get('base_url');
     let view_url = model.get('view_url');
     let options_string = model.get('options');
     let options = JSON.parse(options_string);
@@ -10,7 +11,7 @@ function render({ model, el }) {
     div.setAttribute("id", "frameDiv");
     el.appendChild(div);
 
-    const sdk = clevermapsJsSdk();
+    const sdk = clevermapsJsSdk(base_url);
     console.log('sdk created:', sdk);
 
     const iframe = sdk.createIframe(view_url, options);

@@ -66,6 +66,7 @@ widget = CleverMapsWidget(
 ### Widget Properties
 
 - `view_url` (required): The URL of the CleverMaps view to display
+- `base_url` (optional): The base URL for CleverMaps API (defaults to 'https://secure.clevermaps.io/')
 - `options` (optional): A JSON string containing configuration options for the widget
 
 ### Methods

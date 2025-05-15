@@ -12,6 +12,7 @@ class CleverMapsWidget(anywidget.AnyWidget):
     # required
     view_url = traitlets.Unicode(allow_none=False).tag(sync=True)
     # optional
+    base_url = traitlets.Unicode(default_value='https://secure.clevermaps.io/').tag(sync=True)
     options = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
 
     command = traitlets.Dict({}).tag(sync=True)
