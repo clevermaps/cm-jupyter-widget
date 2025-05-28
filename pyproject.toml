@@ -22,7 +22,7 @@ dynamic = ["version", "description"]
 
 dependencies = [
     "anywidget",
-    "traitlets",
+    "traitlets>=5.0.0",
 ]
 
 [project.urls]
