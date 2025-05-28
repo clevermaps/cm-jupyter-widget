@@ -21,7 +21,7 @@ function render({ model, el }) {
     console.log('iframe rendered in div:', div);
 
     // Add filter change listener
-    iframe.message.addSetFilterListener(() => {
+    iframe.message.addAddFilterListener(() => {
         model.send({ event: 'filter_added' });
     });
 
