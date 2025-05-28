@@ -22,7 +22,7 @@ function render({ model, el }) {
 
     // Add filter change listener
     iframe.message.addAddFilterListener(() => {
-        model.send({ event: 'filter_added' });
+        model.set('filter_added', { timestamp: Date.now() });
     });
 
     model.on("change:command", () => {
