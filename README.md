@@ -68,6 +68,7 @@ widget = CleverMapsWidget(
 - `view_url` (required): The URL of the CleverMaps view to display
 - `base_url` (optional): The base URL for CleverMaps API (defaults to 'https://secure.clevermaps.io/')
 - `options` (optional): A JSON string containing configuration options for the widget
+- `add_filter_callback` (optional): A Python function that will be called when a filter is added. The function will be called without any arguments.
 
 ### Methods
 
@@ -122,6 +123,17 @@ Opens the bookmark modal dialog.
 Opens the export modal dialog.
 
 ## Examples
+
+### Using Filter Callbacks
+
+```python
+def on_filter_added():
+    print("A filter was added")
+    # Handle the filter addition event
+
+widget = CleverMapsWidget(view_url="your-view-url")
+widget.add_filter_callback = on_filter_added
+```
 
 Check out the example notebook in the repository:
 - `sdk-test.ipynb`: Advanced usage and testing examples

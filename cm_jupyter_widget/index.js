@@ -20,6 +20,11 @@ function render({ model, el }) {
     sdk.renderIframe(div, iframe);
     console.log('iframe rendered in div:', div);
 
+    // Add filter change listener
+    iframe.message.addSetFilterListener(() => {
+        model.send({ event: 'filter_added' });
+    });
+
     model.on("change:command", () => {
         const command = model.get('command');
         if (!command || !command.type) return;

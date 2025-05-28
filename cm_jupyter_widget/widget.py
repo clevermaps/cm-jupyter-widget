@@ -1,5 +1,6 @@
 import anywidget
 import traitlets
+from traitlets import observe
 import pathlib
 import json
 from typing import Union, Dict, Any
@@ -14,6 +15,8 @@ class CleverMapsWidget(anywidget.AnyWidget):
     # optional
     base_url = traitlets.Unicode(default_value='https://secure.clevermaps.io/').tag(sync=True)
     options = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
+    filter_callback = traitlets.Any(default_value=None, allow_none=True).tag(sync=False)
+    add_filter_callback = traitlets.Any(default_value=None, allow_none=True).tag(sync=False)
 
     command = traitlets.Dict({}).tag(sync=True)
 
@@ -107,3 +110,8 @@ class CleverMapsWidget(anywidget.AnyWidget):
         self.command = {
             "type": "openExportModal"
         }
+
+    @observe('filter_added')
+    def _handle_filter_added(self, change):
+        if self.add_filter_callback is not None:
+            self.add_filter_callback()
