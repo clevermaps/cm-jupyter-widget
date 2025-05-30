@@ -7,4 +7,4 @@ and exporting data.
 
 from .widget import CleverMapsWidget
 
-__version__ = "0.3.6"
+__version__ = "0.3.7"
