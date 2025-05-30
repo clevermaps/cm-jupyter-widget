@@ -15,6 +15,8 @@ class CleverMapsWidget(anywidget.AnyWidget):
     # optional
     base_url = traitlets.Unicode(default_value='https://secure.clevermaps.io/').tag(sync=True)
     options = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
+    width = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
+    height = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
     add_filter_callback = traitlets.Any(default_value=None, allow_none=True).tag(sync=True)
     filter_added = traitlets.Dict({}).tag(sync=True)
 
