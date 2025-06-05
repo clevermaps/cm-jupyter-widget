@@ -28,14 +28,15 @@ function render({ model, el }) {
     sdk.renderIframe(div, iframe);
     console.log('iframe rendered in div:', div);
 
-    // Přidej posluchač události 'load'
-    iframe.addEventListener('load', () => {
-        // Jakmile je iframe načten, nastav property 'rendered'
-        // Pokud 'rendered' je traitlet definovaný v Pythonu:
-        model.set('rendered', true);
-        model.save_changes(); // Odešle změnu do Pythonu
-    
-        console.log('Iframe byl načten a property "rendered" byla nastavena.');
+    let init = false;
+    iframe.message.addEmbeddingReadyListener((isReady) => {
+        if (isReady && !init) {
+            model.set('rendered', true);
+            model.save_changes(); // Odešle změnu do Pythonu
+            init = true;
+
+            console.log('Iframe byl načten a property "rendered" byla nastavena.');
+        }
     });
 
     console.log(model)
