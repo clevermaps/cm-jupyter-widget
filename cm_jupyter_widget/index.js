@@ -32,11 +32,13 @@ function render({ model, el }) {
     iframe.addEventListener('load', () => {
         // Jakmile je iframe načten, nastav property 'rendered'
         // Pokud 'rendered' je traitlet definovaný v Pythonu:
-        this.model.set('rendered', true);
-        this.model.save_changes(); // Odešle změnu do Pythonu
+        model.set('rendered', true);
+        model.save_changes(); // Odešle změnu do Pythonu
     
         console.log('Iframe byl načten a property "rendered" byla nastavena.');
     });
+
+    console.log(model)
     
     // Add filter change listener
     iframe.message.addAddFilterListener(() => {
