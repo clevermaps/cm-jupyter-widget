@@ -31,6 +31,7 @@ function render({ model, el }) {
     iframe.whenReady().then(() => {
         model.set('rendered', true);
         model.save_changes();
+        console.log('iframe ready')
     })
     
 
