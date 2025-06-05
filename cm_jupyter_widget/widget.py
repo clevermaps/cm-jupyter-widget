@@ -21,6 +21,8 @@ class CleverMapsWidget(anywidget.AnyWidget):
 
     command = traitlets.Dict({}).tag(sync=True)
 
+    rendered = traitlets.Bool(default_value=False).tag(sync=True)
+
     add_filter_init = traitlets.Dict(default_value=None, allow_none=True).tag(sync=True)
     
 
