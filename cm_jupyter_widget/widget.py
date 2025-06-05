@@ -21,14 +21,14 @@ class CleverMapsWidget(anywidget.AnyWidget):
 
     command = traitlets.Dict({}).tag(sync=True)
 
-    add_filter_init = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
+    add_filter_init = traitlets.Dict(default_value=None, allow_none=True).tag(sync=True)
     
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         if 'options' in kwargs and isinstance(kwargs['options'], dict):
             self.options = json.dumps(kwargs['options'])
-        if 'add_filter_init' in kwargs and isinstance(kwargs['add_filter_init'], dict):
+        if 'add_filter_init' in kwargs:
             add_filter_init = kwargs['add_filter_init']
             self.add_filter(add_filter_init['property'], add_filter_init['value'], add_filter_init['id'])
 
