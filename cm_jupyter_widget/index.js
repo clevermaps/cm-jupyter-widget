@@ -28,8 +28,11 @@ function render({ model, el }) {
     sdk.renderIframe(div, iframe);
     console.log('iframe rendered in div:', div);
 
-    model.set('rendered', true);
-    model.save_changes();
+    iframe.whenReady().then(() => {
+        model.set('rendered', true);
+        model.save_changes();
+    })
+    
 
     // Add filter change listener
     iframe.message.addAddFilterListener(() => {
