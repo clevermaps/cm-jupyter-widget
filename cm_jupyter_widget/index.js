@@ -27,19 +27,6 @@ function render({ model, el }) {
 
     sdk.renderIframe(div, iframe);
     console.log('iframe rendered in div:', div);
-
-    let init = false;
-    iframe.message.addEmbeddingReadyListener((isReady) => {
-        if (isReady && !init) {
-            model.set('rendered', true);
-            model.save_changes(); // Odešle změnu do Pythonu
-            init = true;
-
-            console.log('Iframe byl načten a property "rendered" byla nastavena.');
-        }
-    });
-
-    console.log(model)
     
     // Add filter change listener
     iframe.message.addAddFilterListener(() => {

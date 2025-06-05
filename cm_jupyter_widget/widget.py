@@ -16,23 +16,17 @@ class CleverMapsWidget(anywidget.AnyWidget):
     options = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
     width = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
     height = traitlets.Unicode(default_value=None, allow_none=True).tag(sync=True)
+    
     add_filter_callback = traitlets.Any(default_value=None, allow_none=True).tag(sync=True)
     filter_added = traitlets.Dict({}).tag(sync=True)
 
     command = traitlets.Dict({}).tag(sync=True)
-
-    rendered = traitlets.Bool(default_value=False).tag(sync=True)
-
-    add_filter_init = traitlets.Dict(default_value=None, allow_none=True).tag(sync=True)
     
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         if 'options' in kwargs and isinstance(kwargs['options'], dict):
             self.options = json.dumps(kwargs['options'])
-        if 'add_filter_init' in kwargs:
-            add_filter_init = kwargs['add_filter_init']
-            self.add_filter(add_filter_init['property'], add_filter_init['values'], add_filter_init['id'])
 
     def toggle_fit_all(self):
         """Fit all features in the view"""
