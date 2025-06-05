@@ -30,7 +30,7 @@ class CleverMapsWidget(anywidget.AnyWidget):
             self.options = json.dumps(kwargs['options'])
         if 'add_filter_init' in kwargs:
             add_filter_init = kwargs['add_filter_init']
-            self.add_filter(add_filter_init['property'], add_filter_init['value'], add_filter_init['id'])
+            self.add_filter(add_filter_init['property'], add_filter_init['values'], add_filter_init['id'])
 
     def toggle_fit_all(self):
         """Fit all features in the view"""
