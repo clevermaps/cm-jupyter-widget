@@ -28,13 +28,12 @@ function render({ model, el }) {
     sdk.renderIframe(div, iframe);
     console.log('iframe rendered in div:', div);
 
-    iframe.whenReady().then(() => {
+    iframe.message.addEmbeddingReadyListener(() => {
+        console.log('iframe is ready via addEmbeddingReadyListener');
         model.set('rendered', true);
         model.save_changes();
-        console.log('iframe ready')
-    })
+    });
     
-
     // Add filter change listener
     iframe.message.addAddFilterListener(() => {
         model.set('filter_added', { timestamp: Date.now() });
